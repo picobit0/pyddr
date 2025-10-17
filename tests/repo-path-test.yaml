@@ -1,0 +1,8 @@
+%YAML 1.2
+---
+version: '0.1'
+package-name: package
+repository-path: wrong$path
+output-path: output.png
+ascii-format: default
+max-depth: 15

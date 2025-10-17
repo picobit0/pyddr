@@ -1,0 +1,8 @@
+%YAML 1.2
+---
+version: '999.0'
+package-name: package
+repository-path: repo.txt
+output-path: output.png
+ascii-format: default
+max-depth: 15
