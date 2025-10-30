@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><project>
+  <parent>
+    <artifactId>cargo-extensions</artifactId>
+    <groupId>org.codehaus.cargo</groupId>
+    <version>0.8</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>cargo-ant</artifactId>
+  <name>Cargo Ant tasks</name>
+  <version>0.8</version>
+  <description>Ant tasks for Cargo</description>
+  <scm>
+    <connection>scm:svn:svn://svn.cargo.codehaus.org/cargo/scm/cargo/trunk/extensions/ant</connection>
+    <url>http://svn.cargo.codehaus.org/</url>
+  </scm>
+  <distributionManagement>
+    <status>deployed</status>
+  </distributionManagement>
+</project>

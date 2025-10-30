@@ -17,6 +17,75 @@ py grapher.py --config <config-file.yaml>
 py grapher.py -c <config-file.yaml>
 ```
 
+# Этап 3
+## Список изменений:
+* ### Добавлен режим работы с локальным репозиторием
+    Пример настроек режима работы:
+    ```yaml
+    repository-path: tests/repo/
+    repository-mode: local
+    ```
+
+* ### Реализовано построение графа зависимостей
+    Для указания глубины анализа используется настройка `max-depth` (0 - поиск только прямых зависимостей). При построении графа используется алгоритм обхода в ширину.
+
+## Демонстрация работы:
+* ### Построение графа зависимостей пакета Junit (режим удаленного репозитория):
+```console
+$ py grapher.py -c tests/junit-test.yaml
+```
+```
+Fetched 1 package (depth 0)
+Fetched 4 packages (depth 1)
+
+MavenPackage(org.junit.jupiter/junit-jupiter-api - 6.0.0):
+- MavenPackage(org.opentest4j/opentest4j - 1.3.0)
+- MavenPackage(org.junit.platform/junit-platform-commons - 6.0.0)
+- MavenPackage(org.apiguardian/apiguardian-api - 1.1.2)
+- MavenPackage(org.jspecify/jspecify - 1.0.0)
+
+MavenPackage(org.opentest4j/opentest4j - 1.3.0):
+-
+
+MavenPackage(org.junit.platform/junit-platform-commons - 6.0.0):
+- MavenPackage(org.apiguardian/apiguardian-api - 1.1.2)
+- MavenPackage(org.jspecify/jspecify - 1.0.0)
+
+MavenPackage(org.apiguardian/apiguardian-api - 1.1.2):
+-
+
+MavenPackage(org.jspecify/jspecify - 1.0.0):
+-
+```
+
+* ### Построение графа зависимостей пакета Junit (режим локального репозитория):
+```console
+$ py grapher.py -c tests/junit-test-local.yaml
+```
+```
+Fetched 1 package (depth 0)
+Fetched 4 packages (depth 1)
+
+MavenPackage(org.junit.jupiter/junit-jupiter-api - 6.0.0):
+- MavenPackage(org.opentest4j/opentest4j - 1.3.0)
+- MavenPackage(org.junit.platform/junit-platform-commons - 6.0.0)
+- MavenPackage(org.apiguardian/apiguardian-api - 1.1.2)
+- MavenPackage(org.jspecify/jspecify - 1.0.0)
+
+MavenPackage(org.opentest4j/opentest4j - 1.3.0):
+-
+
+MavenPackage(org.junit.platform/junit-platform-commons - 6.0.0):
+- MavenPackage(org.apiguardian/apiguardian-api - 1.1.2)
+- MavenPackage(org.jspecify/jspecify - 1.0.0)
+
+MavenPackage(org.apiguardian/apiguardian-api - 1.1.2):
+-
+
+MavenPackage(org.jspecify/jspecify - 1.0.0):
+-
+```
+
 # Этап 2
 ## Список изменений:
 * ### Версия файла настроек обновлена до 0.2
@@ -56,7 +125,6 @@ py grapher.py -c <config-file.yaml>
     ```
 ## Демонстрация работы:
 ### Получение зависимостей пакета Spring:
-
 ```console
 $ py grapher.py -c tests/files/spring-test.yaml
 ```
@@ -71,7 +139,6 @@ MavenPackage(org.springframework.boot/spring-boot-starter-web - 3.5.4):
 ```
 
 ### Получение зависимостей пакета Junit:
-
 ```console
 $ py grapher.py -c tests/files/junit-test.yaml
 ```
@@ -84,7 +151,6 @@ MavenPackage(org.junit.jupiter/junit-jupiter-api - 5.13.4):
 ```
 
 ### Получение зависимостей пакета Scala:
-
 ```console
 $ py grapher.py -c tests/files/scala-test.yaml
 ```

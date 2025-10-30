@@ -1,6 +1,7 @@
 from argparse import ArgumentParser
 from config import Config, ConfigError
 from maven_package import MavenPackage, PackageFetchError
+from graph_builder import build_graph
 
 def get_config ():
     parser = ArgumentParser()
@@ -14,12 +15,15 @@ if __name__ == "__main__":
     try:
         config = get_config()
         package = MavenPackage(*config.packageInfo)
-        print(f"{package}:")
-        package.fetch_data_from_remote_repo(config.repo)
-        deps = package.get_dependency_list()
-        for i in deps:
-            print("-", i)
-        if not deps: print("-")
+        graph = build_graph(package, config.repoInfo, config.depth)
+        for package in graph:
+            print()
+            deps = graph[package]
+            print(f"{package}:")
+            for d in deps:
+                print("-", d)
+            if not deps:
+                print("-")
     except ConfigError as err:
         print("Error!", err)
     except PackageFetchError as err:

@@ -48,6 +48,10 @@ class Config ():
     def packageInfo (self):
         return self.packageGroup, self.packageName, self.packageVersion
 
+    @property
+    def repoInfo (self):
+        return self.repo, self.mode
+
     @staticmethod
     def from_file (path):
         try:
@@ -60,7 +64,6 @@ class Config ():
         except yaml.scanner.ScannerError:
             raise ConfigError(f"Config file is not a valid yaml file")
             
-
     def print (self):
         print("Version:", self.version)
         print("Package group:", self.packageGroup)

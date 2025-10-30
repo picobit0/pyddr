@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.hibernate</groupId>
+  <artifactId>hibernate-cglib-repack</artifactId>
+  <name>Hibernate CGLIB Repackaging</name>
+  <version>2.1_3</version>
+  <description>A repackaging of CGLIB (and its ASM dependencies) under the org.hibernate namespace to avoid version
+        conflicts.  The produced artifact is not intended for any use other than to be consumed by hibernate.</description>
+  <url>http://hibernate.org</url>
+  <scm>
+    <connection>scm:svn:https://svn.jboss.org/repos/hibernate/cglib/trunk</connection>
+    <developerConnection>scm:svn:https://svn.jboss.org/repos/hibernate/cglib/trunk</developerConnection>
+    <url>https://svn.jboss.org/repos/hibernate/cglib/trunk</url>
+  </scm>
+  <organization>
+    <name>Hibernate.org</name>
+    <url>http://hibernate.org</url>
+  </organization>
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-shade-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+            <configuration>
+              <artifactSet>
+                <includes>
+                  <include>cglib:cglib-nodep</include>
+                </includes>
+              </artifactSet>
+              <relocations>
+                <relocation>
+                  <pattern>net.sf.cglib</pattern>
+                  <shadedPattern>org.hibernate.repackage.cglib</shadedPattern>
+                </relocation>
+              </relocations>
+              <transformers>
+                <transformer />
+              </transformers>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>2.0.2</version>
+        <configuration>
+          <source>1.4</source>
+          <target>1.4</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>2.1</version>
+        <configuration>
+          <archive>
+            <manifest>
+              <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+              <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+            </manifest>
+            <manifestEntries>
+              <Implementation-URL>${pom.url}</Implementation-URL>
+            </manifestEntries>
+            <addMavenDescriptor>false</addMavenDescriptor>
+          </archive>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+  <distributionManagement>
+    <repository>
+      <id>repository.jboss.org</id>
+      <url>file://${maven.repository.root}</url>
+    </repository>
+    <snapshotRepository>
+      <id>snapshots.jboss.org</id>
+      <name>JBoss Snapshot Repository</name>
+      <url>dav:https://snapshots.jboss.org/maven2</url>
+    </snapshotRepository>
+  </distributionManagement>
+</project>
+

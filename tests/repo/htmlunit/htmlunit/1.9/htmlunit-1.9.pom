@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?><project>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>htmlunit</groupId>
+  <artifactId>htmlunit</artifactId>
+  <name>htmlunit</name>
+  <version>1.9</version>
+  <description>A tool for testing web based applications</description>
+  <url>http://htmlunit.sourceforge.net</url>
+  <issueManagement>
+    <url>http://sourceforge.net/tracker/?group_id=47038&amp;atid=448266</url>
+  </issueManagement>
+  <ciManagement>
+    <notifiers>
+      <notifier>
+        <configuration>
+          <address>htmlunit@GargoyleSoftware.com</address>
+        </configuration>
+      </notifier>
+    </notifiers>
+  </ciManagement>
+  <inceptionYear>2002</inceptionYear>
+  <mailingLists>
+    <mailingList>
+      <name>HtmlUnit Users</name>
+      <subscribe>http://lists.sourceforge.net/lists/listinfo/htmlunit-user</subscribe>
+      <unsubscribe>http://lists.sourceforge.net/lists/listinfo/htmlunit-user</unsubscribe>
+      <archive>http://lists.sourceforge.net/lists/listinfo/htmlunit-user</archive>
+    </mailingList>
+    <mailingList>
+      <name>HtmlUnit Developers</name>
+      <subscribe>http://lists.sourceforge.net/lists/listinfo/htmlunit-develop</subscribe>
+      <unsubscribe>http://lists.sourceforge.net/lists/listinfo/htmlunit-develop</unsubscribe>
+      <archive>http://lists.sourceforge.net/lists/listinfo/htmlunit-develop</archive>
+    </mailingList>
+  </mailingLists>
+  <developers>
+    <developer>
+      <id>mbowler</id>
+      <name>Mike Bowler</name>
+      <email>mbowler@GargoyleSoftware.com</email>
+      <url>http://www.sphericalimprovement.com/blogs/mbowler/</url>
+      <organization>Gargoyle Software Inc.</organization>
+      <timezone>-5</timezone>
+    </developer>
+    <developer>
+      <id>dktaylor</id>
+      <name>David K. Taylor</name>
+    </developer>
+    <developer>
+      <id>yourgod</id>
+      <name>Brad Clarke</name>
+      <email>yourgod@users.sourceforge.net</email>
+      <url>http://www.bradclarke.com/</url>
+      <timezone>-6</timezone>
+    </developer>
+    <developer>
+      <id>mguillem</id>
+      <name>Marc Guillemot</name>
+      <email>mguillem@users.sourceforge.net</email>
+      <timezone>+1</timezone>
+    </developer>
+    <developer>
+      <id>cerskine</id>
+      <name>Chris Erskine</name>
+      <email>cerskine@users.sourceforge.net</email>
+      <timezone>-7</timezone>
+    </developer>
+  </developers>
+  <contributors>
+    <contributor>
+      <name>Noboru Sinohara</name>
+    </contributor>
+    <contributor>
+      <name>Mike J. Bresnahan</name>
+      <email>gudujarlson@sf.net</email>
+    </contributor>
+    <contributor>
+      <name>Dominique Broeglin</name>
+    </contributor>
+    <contributor>
+      <name>Alex Nikiforoff</name>
+    </contributor>
+    <contributor>
+      <name>Barnaby Court</name>
+    </contributor>
+    <contributor>
+      <name>Andreas Hangler</name>
+    </contributor>
+    <contributor>
+      <name>Jun Chen</name>
+      <email>chen_jun@users.sourceforge.net</email>
+    </contributor>
+    <contributor>
+      <name>Christian Sell</name>
+      <email>cse@dynabean.de</email>
+    </contributor>
+    <contributor>
+      <name>Darrell DeBoer</name>
+    </contributor>
+    <contributor>
+      <name>David D. Kilzer</name>
+    </contributor>
+    <contributor>
+      <name>Ben Curren</name>
+      <email>bcurren@esomnie.com</email>
+    </contributor>
+    <contributor>
+      <name>Mike Williams</name>
+    </contributor>
+    <contributor>
+      <name>Mike Gallaher</name>
+    </contributor>
+    <contributor>
+      <name>Dierk Koenig</name>
+    </contributor>
+    <contributor>
+      <name>Daniel Gredler</name>
+    </contributor>
+    <contributor>
+      <name>Mike Bresnahan</name>
+    </contributor>
+    <contributor>
+      <name>Sergey Gorelkin</name>
+    </contributor>
+    <contributor>
+      <name>Chris Eldredge</name>
+    </contributor>
+    <contributor>
+      <name>Hans Donner</name>
+    </contributor>
+    <contributor>
+      <name>Michael Ottati</name>
+    </contributor>
+    <contributor>
+      <name>George Murnock</name>
+    </contributor>
+    <contributor>
+      <name>Kent Tong</name>
+    </contributor>
+    <contributor>
+      <name>Alfred Nathaniel</name>
+    </contributor>
+    <contributor>
+      <name>Bruce Faulkner</name>
+    </contributor>
+    <contributor>
+      <name>Ray Suliteanu</name>
+    </contributor>
+    <contributor>
+      <name>Denis N. Antonioli</name>
+    </contributor>
+    <contributor>
+      <name>Stefan Anzinger</name>
+    </contributor>
+    <contributor>
+      <name>Paul King</name>
+    </contributor>
+    <contributor>
+      <name>Vikram Shitole</name>
+    </contributor>
+    <contributor>
+      <name>Mark van Leeuwen</name>
+    </contributor>
+    <contributor>
+      <name>Brad Murray</name>
+    </contributor>
+    <contributor>
+      <name>Julien Henry</name>
+    </contributor>
+  </contributors>
+  <licenses>
+    <license>
+      <name>The HtmlUnit Software License</name>
+      <url>http://htmlunit.sourceforge.net/license.html</url>
+    </license>
+  </licenses>
+  <scm>
+    <connection>scm:cvs:pserver:anonymous@htmlunit.cvs.sourceforge.net:/cvsroot/htmlunit:htmlunit</connection>
+    <developerConnection>scm:cvs:ext:${maven.username}@htmlunit.cvs.sourceforge.net:/cvsroot/htmlunit:htmlunit/</developerConnection>
+    <url>http://htmlunit.cvs.sourceforge.net/htmlunit</url>
+  </scm>
+  <organization>
+    <name>Gargoyle Software Inc.</name>
+    <url>http://www.GargoyleSoftware.com/</url>
+  </organization>
+  <build>
+    <sourceDirectory>src/java</sourceDirectory>
+    <testSourceDirectory>src/test/java</testSourceDirectory>
+    <plugins>
+      <plugin>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <includes>
+            <include>**/*Test.java</include>
+          </includes>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+    </dependency>
+    <dependency>
+      <groupId>junitperf</groupId>
+      <artifactId>junitperf</artifactId>
+      <version>1.8</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-jelly</groupId>
+      <artifactId>commons-jelly</artifactId>
+      <version>1.0</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-jelly</groupId>
+      <artifactId>commons-jelly-tags-log</artifactId>
+      <version>1.0</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-jelly</groupId>
+      <artifactId>commons-jelly-tags-xml</artifactId>
+      <version>1.0</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-jelly</groupId>
+      <artifactId>commons-jelly-tags-junit</artifactId>
+      <version>1.0</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-jexl</groupId>
+      <artifactId>commons-jexl</artifactId>
+      <version>1.0</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-cli</groupId>
+      <artifactId>commons-cli</artifactId>
+      <version>1.0</version>
+    </dependency>
+    <dependency>
+      <groupId>dom4j</groupId>
+      <artifactId>dom4j</artifactId>
+      <version>1.6.1</version>
+    </dependency>
+    <dependency>
+      <groupId>jaxen</groupId>
+      <artifactId>jaxen</artifactId>
+      <version>1.1-beta-9</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-collections</groupId>
+      <artifactId>commons-collections</artifactId>
+      <version>3.2</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-beanutils</groupId>
+      <artifactId>commons-beanutils</artifactId>
+      <version>1.7.0</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-lang</groupId>
+      <artifactId>commons-lang</artifactId>
+      <version>2.1</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-httpclient</groupId>
+      <artifactId>commons-httpclient</artifactId>
+      <version>3.0.1</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-codec</groupId>
+      <artifactId>commons-codec</artifactId>
+      <version>1.3</version>
+    </dependency>
+    <dependency>
+      <groupId>gsbase</groupId>
+      <artifactId>gsbase</artifactId>
+      <version>2.0.1</version>
+    </dependency>
+    <dependency>
+      <groupId>rhino</groupId>
+      <artifactId>js</artifactId>
+      <version>1.6R2</version>
+    </dependency>
+    <dependency>
+      <groupId>xerces</groupId>
+      <artifactId>xercesImpl</artifactId>
+      <version>2.6.2</version>
+    </dependency>
+    <dependency>
+      <groupId>xerces</groupId>
+      <artifactId>xmlParserAPIs</artifactId>
+      <version>2.6.2</version>
+    </dependency>
+    <dependency>
+      <groupId>nekohtml</groupId>
+      <artifactId>nekohtml</artifactId>
+      <version>0.9.5</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-logging</groupId>
+      <artifactId>commons-logging</artifactId>
+      <version>1.1</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+      <version>1.2</version>
+    </dependency>
+    <dependency>
+      <groupId>jetty</groupId>
+      <artifactId>org.mortbay.jetty</artifactId>
+      <version>5.1.4</version>
+    </dependency>
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>servlet-api</artifactId>
+      <version>2.4</version>
+    </dependency>
+  </dependencies>
+  <distributionManagement>
+    <repository>
+      <id>default</id>
+      <name>Default Repository</name>
+      <url>file:///home/groups/h/ht/htmlunit/htdocs/nightly</url>
+    </repository>
+    <site>
+      <id>default</id>
+      <name>Default Site</name>
+      <url>scp://htmlunit.sourceforge.net//home/groups/h/ht/htmlunit/htdocs</url>
+    </site>
+    <status>converted</status>
+  </distributionManagement>
+</project>

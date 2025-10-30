@@ -77,6 +77,12 @@ class MavenPackage:
         group = self.group.replace(".", "/")
         return f"{group}/{self.id}/{self.version}/{self.id}-{self.version}.pom"
 
+    def fetch_data_from_repo (self, repoPath, mode):
+        if mode == "local":
+            self.fetch_data_from_local_repo(repoPath)
+        elif mode == "url":
+            self.fetch_data_from_remote_repo(repoPath)
+
     def fetch_data_from_local_repo (self, repoPath):
         path = repoPath + self.get_relative_url()
         tree = ElementTree()
@@ -109,7 +115,7 @@ class MavenPackage:
             dependencies = dependencies.values()
         for dep in dependencies:
             version = dep.get("version", "")
-            if not version or "??" in version:
+            if not version or "??" in version + dep["groupId"]:
                 continue
             res.append(MavenPackage(dep["groupId"], dep["artifactId"], version))
         return res
@@ -117,5 +123,8 @@ class MavenPackage:
     def __repr__ (self):
         return f"MavenPackage({self.group}/{self.id} - {self.version})"
 
+    def __eq__ (self, other):
+        return (self.group, self.id, self.version) == (other.group, other.id, other.version)
+
     def __hash__ (self):
-        return hash((self.group, self.id, self.version, self._pom is None))
+        return hash((self.group, self.id, self.version))

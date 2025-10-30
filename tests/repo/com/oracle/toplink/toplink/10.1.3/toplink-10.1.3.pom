@@ -1,0 +1,15 @@
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.oracle.toplink</groupId>
+  <artifactId>toplink</artifactId>
+  <version>10.1.3</version>
+  <name>Oracle toplink</name>
+  <url>http://www.oracle.com/technology/products/ias/toplink/index.html</url>
+  <distributionManagement>
+    <downloadUrl>http://www.oracle.com/technology/software/htdocs/eaplic.html?http://download.oracle.com/otn/java/oc4j/1013/preview/toplink_1013dp4.zip</downloadUrl>
+  </distributionManagement>
+
+  <dependencies>
+  </dependencies>
+
+</project>

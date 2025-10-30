@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.scalatest</groupId>
+    <artifactId>test-interface</artifactId>
+    <packaging>jar</packaging>
+    <description>test-interface</description>
+    <version>1.0-SNAP3</version>
+    <name>test-interface</name>
+    <organization>
+        <name>org.scalatest</name>
+    </organization>
+    <url>http://www.scala-sbt</url>
+    <licenses>
+        <license>
+            <name>Test Interface License</name>
+            <url>https://github.com/harrah/test-interface/blob/master/LICENSE</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <scm>
+        <url>https://github.com/harrah/test-interface</url>
+    </scm>
+    <developers>
+        <developer>
+            <id>harrah</id>
+            <name>Mark Harrah</name>
+        </developer>
+        <developer>
+            <id>josh</id>
+            <name>Josh Cough</name>
+        </developer>
+        <developer>
+            <id>bill</id>
+            <name>Bill Venners</name>
+        </developer>
+        <developer>
+            <id>cheeseng</id>
+            <name>Chua Chee Seng</name>
+        </developer>
+    </developers>
+    <dependencies>
+        <dependency>
+            <groupId>org.scala-lang</groupId>
+            <artifactId>scala-library</artifactId>
+            <version>2.10.1</version>
+        </dependency>
+    </dependencies>
+</project>

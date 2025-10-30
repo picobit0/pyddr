@@ -6,8 +6,8 @@ package-group: org.junit.jupiter
 package-name: junit-jupiter-api
 package-version: 6.0.0
 
-repository-path: https://repo.maven.apache.org/maven2/
-repository-mode: url
+repository-path: tests/repo/
+repository-mode: local
 output-path: output.png
 ascii-format: default
 max-depth: 15

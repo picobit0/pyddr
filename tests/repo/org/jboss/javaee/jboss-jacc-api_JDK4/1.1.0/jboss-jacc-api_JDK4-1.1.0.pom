@@ -1,0 +1,41 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <parent>
+    <groupId>org.jboss.javaee</groupId>
+    <artifactId>jboss-javaee-parent</artifactId>
+    <version>6.0.0-alpha-1</version>
+    <relativePath>../build/pom.xml</relativePath>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.jboss.javaee</groupId>
+  <artifactId>jboss-jacc-api_JDK4</artifactId>
+  <version>1.1.0</version>
+  <packaging>jar</packaging>
+  <name>JACC 1.1 API</name>
+  <url>http://www.jboss.org</url>
+  <description>The Java Authorization Contract for Containers 1.1 API classes</description>
+  <dependencies>
+    <dependency>
+      <groupId>org.jboss</groupId>
+      <artifactId>jboss-common-core</artifactId>
+      <version>2.0.5.GA</version>
+    </dependency>
+    <dependency>
+      <groupId>org.jboss.javaee</groupId>
+      <artifactId>jboss-servlet-api_3.0</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
+  </dependencies>
+  <build>
+    <plugins>
+       <plugin>
+         <groupId>org.apache.maven.plugins</groupId>
+         <artifactId>maven-compiler-plugin</artifactId>
+         <version>2.1</version>
+         <configuration>
+           <source>1.4</source>
+           <target>1.4</target>
+         </configuration>
+       </plugin>
+    </plugins>
+  </build>
+</project>
