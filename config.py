@@ -9,17 +9,24 @@ class ConfigError (Exception):
 
 class Config ():
     def __init__ (self, config):
-        self.version = config.get("version", "0.1")
-        if self.version != "0.1":
-            raise ConfigError(f"Config version mismach ({self.version} != 0.1)")
+        self.version = str(config.get("version", ""))
+        if self.version != "0.2":
+            raise ConfigError(f"Unsupported config version ({self.version})")
+
         
-        self.package = config.get("package-name", "Default package")
-        if not isinstance(self.package, str):
-            raise ConfigError(f"Package name is not a string: {self.package}")
+        self.packageGroup = config.get("package-group", "")
+        if not self.packageGroup:
+            raise ConfigError(f"No package group specified")
+        
+        self.packageName = config.get("package-name", "")
+        if not self.packageName:
+            raise ConfigError(f"No package name specified")
+
+        self.packageVersion = str(config.get("package-version", ""))
+        if not self.packageVersion:
+            raise ConfigError(f"No package group specified")
         
         self.repo = config.get("repository-path", "repo.txt")
-        if not isinstance(self.repo, str) or not Path(self.repo).is_file():
-            raise ConfigError(f"Wrong repository path: {self.repo}")
 
         self.mode = config.get("repository-mode", "local")
         if not self.mode in repositoryModes:
@@ -35,11 +42,30 @@ class Config ():
         
         self.depth = config.get("max-depth", 15)
         if not isinstance(self.depth, int) or self.depth <= 0:
-            raise ConfigError(f"Invalid max depth: {self.depth}")  
+            raise ConfigError(f"Invalid max depth: {self.depth}")
+
+    @property
+    def packageInfo (self):
+        return self.packageGroup, self.packageName, self.packageVersion
+
+    @staticmethod
+    def from_file (path):
+        try:
+            with open(path, encoding="utf-8") as f:
+                configDict = yaml.load(f, yaml.Loader)
+            res = Config(configDict)
+            return res
+        except FileNotFoundError:
+            raise ConfigError(f"Can't open config file: {path}")
+        except yaml.scanner.ScannerError:
+            raise ConfigError(f"Config file is not a valid yaml file")
+            
 
     def print (self):
         print("Version:", self.version)
-        print("Package name:", self.package)
+        print("Package group:", self.packageGroup)
+        print("Package name:", self.packageName)
+        print("Package version:", self.packageVersion)
         print("Repository path:", self.repo)
         print("Repository mode:", self.mode)
         print("Output path:", self.output)

@@ -17,6 +17,84 @@ py grapher.py --config <config-file.yaml>
 py grapher.py -c <config-file.yaml>
 ```
 
+# Этап 2
+## Список изменений:
+* ### Версия файла настроек обновлена до 0.2
+    
+    Новые настройки:
+    * `package-group` - группа пакета
+    * `package-version` - версия пакета
+
+    Пример нового файла настроек:
+    ```yaml
+    %YAML 1.2
+    ---
+    version: '0.2'
+
+    package-group: org.junit.jupiter
+    package-name: junit-jupiter-api
+    package-version: 6.0.0
+
+    repository-path: https://repo.maven.apache.org/maven2/
+    repository-mode: url
+    output-path: output.png
+    ascii-format: default
+    max-depth: 15
+    ```
+* ### Добавлена поддержка формата пакетов Maven
+    Пример получения прямых зависимостей из [Центрального Репозитория Maven](https://repo.maven.apache.org/maven2/):
+    ```console
+    $ py grapher.py -c config.yaml
+    ```
+
+    ```
+    MavenPackage(org.junit.jupiter/junit-jupiter-api - 6.0.0):
+    - MavenPackage(org.opentest4j/opentest4j - 1.3.0)
+    - MavenPackage(org.junit.platform/junit-platform-commons - 6.0.0)
+    - MavenPackage(org.apiguardian/apiguardian-api - 1.1.2)
+    - MavenPackage(org.jspecify/jspecify - 1.0.0)
+    ```
+## Демонстрация работы:
+### Получение зависимостей пакета Spring:
+
+```console
+$ py grapher.py -c tests/files/spring-test.yaml
+```
+
+```
+MavenPackage(org.springframework.boot/spring-boot-starter-web - 3.5.4):
+- MavenPackage(org.springframework.boot/spring-boot-starter - 3.5.4)
+- MavenPackage(org.springframework.boot/spring-boot-starter-json - 3.5.4)
+- MavenPackage(org.springframework.boot/spring-boot-starter-tomcat - 3.5.4)
+- MavenPackage(org.springframework/spring-web - 6.2.9)
+- MavenPackage(org.springframework/spring-webmvc - 6.2.9)
+```
+
+### Получение зависимостей пакета Junit:
+
+```console
+$ py grapher.py -c tests/files/junit-test.yaml
+```
+
+```
+MavenPackage(org.junit.jupiter/junit-jupiter-api - 5.13.4):
+- MavenPackage(org.opentest4j/opentest4j - 1.3.0)
+- MavenPackage(org.junit.platform/junit-platform-commons - 1.13.4)
+- MavenPackage(org.apiguardian/apiguardian-api - 1.1.2)
+```
+
+### Получение зависимостей пакета Scala:
+
+```console
+$ py grapher.py -c tests/files/scala-test.yaml
+```
+
+```
+MavenPackage(org.scala-lang/scala3-library_3 - 3.7.3):
+- MavenPackage(com.github.sbt/junit-interface - 0.13.3)
+- MavenPackage(org.scala-lang/scala-library - 2.13.16)
+```
+
 # Этап 1
 ## Список изменений:
 * ### Добавлено считывание настроек из файла

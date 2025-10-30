@@ -1,8 +1,0 @@
-%YAML 1.2
----
-version: '0.1'
-package-name: package
-repository-path: repo.txt
-output-path: wrong$path
-ascii-format: default
-max-depth: 15

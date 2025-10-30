@@ -1,9 +1,10 @@
 %YAML 1.2
 ---
-version: '0.1'
+version: '0.2'
+package-group: group
 package-name: package
+package-version: 0.0.0
 repository-path: repo.txt
-repository-mode: wrong-mode
-output-path: output.png
+output-path: wrong$path
 ascii-format: default
 max-depth: 15

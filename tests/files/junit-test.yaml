@@ -4,10 +4,10 @@ version: '0.2'
 
 package-group: org.junit.jupiter
 package-name: junit-jupiter-api
-package-version: 6.0.0
+package-version: 5.13.4
 
 repository-path: https://repo.maven.apache.org/maven2/
 repository-mode: url
-output-path: output.png
+output-path: files/output.png
 ascii-format: default
 max-depth: 15

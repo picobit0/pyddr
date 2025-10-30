@@ -1,23 +1,26 @@
-import yaml
 from argparse import ArgumentParser
-from config import Config, ConfigError      
+from config import Config, ConfigError
+from maven_package import MavenPackage, PackageFetchError
 
-def parse_args ():
+def get_config ():
     parser = ArgumentParser()
     parser.add_argument("-c", "--config")
     argv = parser.parse_args()
-    return argv
+    
+    configPath = argv.config or "config.yaml"
+    return Config.from_file(configPath)
 
 if __name__ == "__main__":
-    configPath = parse_args().config or "config.yaml"
     try:
-        with open(configPath, encoding="utf-8") as f:
-            configDict = yaml.load(f, yaml.Loader)
-        config = Config(configDict)
-        config.print() 
-    except FileNotFoundError:
-        print(f"Error! Can't open config file: {configPath}")
-    except yaml.scanner.ScannerError:
-        print(f"Error! Config file is not a valid yaml file")
+        config = get_config()
+        package = MavenPackage(*config.packageInfo)
+        print(f"{package}:")
+        package.fetch_data_from_remote_repo(config.repo)
+        deps = package.get_dependency_list()
+        for i in deps:
+            print("-", i)
+        if not deps: print("-")
     except ConfigError as err:
         print("Error!", err)
+    except PackageFetchError as err:
+        print(err)
