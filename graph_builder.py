@@ -1,7 +1,7 @@
 from queue import deque
 from maven_package import PackageFetchError
 
-def build_graph (package, repo, maxDepth = 5, exclude=None):
+def build_graph (package, repo, maxDepth = 5, exclude=None, silent=True):
     graph = {}
     failed = set()
     queue = deque([package])
@@ -22,8 +22,8 @@ def build_graph (package, repo, maxDepth = 5, exclude=None):
             except Exception as e:
                 failed.add(package)
             
-        if n > 0: print(f"Fetched {n} package" + ("" if n%100==1 else "s")
-                        + f" (depth {depth})")
+        if not silent and n > 0:
+            print(f"Fetched {n} package" + ("" if n%100==1 else "s") + f" (depth {depth})")
 
     return graph
 

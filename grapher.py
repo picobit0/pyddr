@@ -14,16 +14,22 @@ def get_config ():
 if __name__ == "__main__":
     try:
         config = get_config()
-        package = MavenPackage(*config.packageInfo)
-        graph = build_graph(package, config.repoInfo, config.depth)
-        for package in graph:
-            print()
-            deps = graph[package]
-            print(f"{package}:")
-            for d in deps:
-                print("-", d)
-            if not deps:
-                print("-")
+        rootPackage = MavenPackage(*config.packageInfo)
+        print("Building dependency graph...")
+        graph = build_graph(rootPackage, config.repoInfo, config.depth)
+
+        inp = input("\nEnter package to analyse: ").replace("/", " ").replace(" - ", " ").split()
+        if len(inp) != 3:
+            print("Wrong input format!")
+            exit()
+        group, name, version = inp
+        package = MavenPackage(group, name, version)
+        invDependencies = [p for p in graph if package in graph[p]]
+        print(f"\nInverse dependensies for {package}:")
+        for p in invDependencies:
+            print("-", p)
+        if not invDependencies:
+            print("-")
     except ConfigError as err:
         print("Error!", err)
     except PackageFetchError as err:

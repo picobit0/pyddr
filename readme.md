@@ -17,6 +17,47 @@ py grapher.py --config <config-file.yaml>
 py grapher.py -c <config-file.yaml>
 ```
 
+# Этап 4
+## Список изменений:
+* ### Добавлен поиск обратных зависимостей пакета
+    Пример поиска обратных зависимостей пакета:
+    ```
+    Building dependency graph...
+
+    Enter package to analyse: org.apiguardian/apiguardian-api - 1.1.2
+
+    Inverse dependensies for MavenPackage(org.apiguardian/apiguardian-api - 1.1.2):
+    - MavenPackage(org.junit.platform/junit-platform-suite-engine - 1.10.2)
+    - MavenPackage(org.junit.platform/junit-platform-engine - 1.10.2)
+    - MavenPackage(org.junit.platform/junit-platform-suite-api - 1.10.2)
+    - MavenPackage(org.junit.platform/junit-platform-suite-commons - 1.10.2)
+    - MavenPackage(org.junit.platform/junit-platform-commons - 1.10.2)
+    - MavenPackage(org.junit.platform/junit-platform-launcher - 1.10.2)
+    ```
+## Демонстрация работы:
+* ### Нахождение обратных зависимостей пакета log4j (версии 1.2.15):
+```
+Inverse dependensies for MavenPackage(log4j/log4j - 1.2.15):
+- MavenPackage(org.springframework/spring - 2.5.6)
+- MavenPackage(org.hibernate/hibernate-commons-annotations - 3.0.0.ga)
+ ```
+
+* ### Нахождение обратных зависимостей пакета guice (версии 2.0):
+```
+Inverse dependensies for MavenPackage(com.google.inject/guice - 2.0):
+- MavenPackage(org.testng/testng - 6.1.1)
+- MavenPackage(org.testng/testng - 6.8.13)
+- MavenPackage(org.testng/testng - 5.14.2)
+- MavenPackage(org.testng/testng - 6.8)
+- MavenPackage(org.testng/testng - 5.14.1)
+- MavenPackage(org.testng/testng - 6.8.1)
+- MavenPackage(org.testng/testng - 6.8.5)
+- MavenPackage(org.testng/testng - 5.12.1)
+- MavenPackage(org.testng/testng - 6.8.8)
+- MavenPackage(org.testng/testng - 5.14.10)
+- MavenPackage(org.testng/testng - 6.5.2)
+```
+
 # Этап 3
 ## Список изменений:
 * ### Добавлен режим работы с локальным репозиторием
