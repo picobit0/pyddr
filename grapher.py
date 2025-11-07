@@ -2,6 +2,7 @@ from argparse import ArgumentParser
 from config import Config, ConfigError
 from maven_package import MavenPackage, PackageFetchError
 from graph_builder import build_graph
+from graph_renderer import render_graph, print_as_tree
 
 def get_config ():
     parser = ArgumentParser()
@@ -17,19 +18,21 @@ if __name__ == "__main__":
         rootPackage = MavenPackage(*config.packageInfo)
         print("Building dependency graph...")
         graph = build_graph(rootPackage, config.repoInfo, config.depth)
-
-        inp = input("\nEnter package to analyse: ").replace("/", " ").replace(" - ", " ").split()
-        if len(inp) != 3:
-            print("Wrong input format!")
-            exit()
-        group, name, version = inp
-        package = MavenPackage(group, name, version)
-        invDependencies = [p for p in graph if package in graph[p]]
-        print(f"\nInverse dependensies for {package}:")
-        for p in invDependencies:
-            print("-", p)
-        if not invDependencies:
-            print("-")
+        if config.ascii == "none":
+            print("Rendering graph...")
+            render_graph(graph, config.output, f"Dependencies of {rootPackage}")
+            path = config.output + ("" if config.output.endswith(".svg") else ".svg")
+            print(f'Done! File saved at "{path}"')
+        elif config.ascii == "list":
+            print("\n=== Dependency list ===")
+            for package in graph:
+                print(f"{package}:")
+                for d in (graph[package] or [""]):
+                    print("-", d)
+                print()
+        elif config.ascii == "tree":
+            print("\n=== Dependency tree ===")
+            print_as_tree(graph)
     except ConfigError as err:
         print("Error!", err)
     except PackageFetchError as err:

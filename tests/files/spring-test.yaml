@@ -6,8 +6,8 @@ package-group: org.springframework.boot
 package-name: spring-boot-starter-web
 package-version: 3.5.4
 
-repository-path: https://repo.maven.apache.org/maven2/
-repository-mode: url
-output-path: files/output.png
-ascii-format: default
-max-depth: 15
+repository-path: repo/
+repository-mode: local
+output-path: output/output-spring.svg
+ascii-format: none
+max-depth: 5

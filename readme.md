@@ -17,6 +17,98 @@ py grapher.py --config <config-file.yaml>
 py grapher.py -c <config-file.yaml>
 ```
 
+# Этап 5
+## Список изменений:
+* ### Добавлена визуализация графа зависимостей в файл .svg
+    Настройка визуализации зависимостей пакета Junit
+    ```yaml
+    version: '0.2'
+
+    package-group: org.junit.jupiter
+    package-name: junit-jupiter-api
+    package-version: 6.0.0
+
+    repository-path: files/repo/
+    repository-mode: local
+    output-path: output.svg
+    ascii-format: none
+    max-depth: 15
+    ```
+
+* ### Добавлен режим вывода графа зависимостей в формате ascii
+    Варианты настройки `ascii-format`:
+    * `none` - отсутствие текстового вывода
+    * `list` - вывод списка зависимостей
+    * `tree` - вывод ascii-дерева зависимостей
+
+
+
+## Демонстрация работы:
+* ### Визуализация зависимостей пакета Junit:
+    ![Пример графа зависимостей](image.png)
+* ### Вывод зависимостей пакета Junit в виде списка:
+    ```
+    === Dependency list ===
+    MavenPackage(org.junit.jupiter/junit-jupiter-api - 6.0.0):
+    - MavenPackage(org.opentest4j/opentest4j - 1.3.0)
+    - MavenPackage(org.junit.platform/junit-platform-commons - 6.0.0)
+    - MavenPackage(org.apiguardian/apiguardian-api - 1.1.2)
+    - MavenPackage(org.jspecify/jspecify - 1.0.0)
+
+    MavenPackage(org.opentest4j/opentest4j - 1.3.0):
+    -
+
+    MavenPackage(org.junit.platform/junit-platform-commons - 6.0.0):
+    - MavenPackage(org.apiguardian/apiguardian-api - 1.1.2)
+    - MavenPackage(org.jspecify/jspecify - 1.0.0)
+
+    MavenPackage(org.apiguardian/apiguardian-api - 1.1.2):
+    -
+
+    MavenPackage(org.jspecify/jspecify - 1.0.0):
+    -
+    ```
+* ### Вывод зависимостей пакета Scala в формате ascii-дерева:
+    ```
+    MavenPackage(org.scala-lang/scala3-library_3 - 3.7.3):
+    ├ MavenPackage(com.github.sbt/junit-interface - 0.13.3):
+    │ ├ MavenPackage(junit/junit - 4.13.2):
+    │ │ ├ MavenPackage(org.hamcrest/hamcrest-core - 1.3)
+    │ │ └ MavenPackage(org.hamcrest/hamcrest-library - 1.3):
+    │ │   └ MavenPackage(org.hamcrest/hamcrest-core - 1.3)
+    │ │     └ ...
+    │ └ MavenPackage(org.scala-sbt/test-interface - 1.0):
+    │   └ MavenPackage(org.scalatest/scalatest_2.10 - 2.0.M6-SNAP24):
+    │     ├ MavenPackage(org.scala-lang/scala-library - 2.10.0)
+    │     ├ MavenPackage(org.scala-lang/scala-compiler - 2.10.0)
+    │     ├ MavenPackage(org.scalatest/test-interface - 1.0-SNAP3)
+    │     ├ MavenPackage(org.antlr/stringtemplate - 3.2)
+    │     ├ MavenPackage(org.scalacheck/scalacheck_2.10 - 1.10.0)
+    │     ├ MavenPackage(org.easymock/easymockclassextension - 3.1)
+    │     ├ MavenPackage(org.jmock/jmock-legacy - 2.5.1)
+    │     ├ MavenPackage(org.mockito/mockito-all - 1.9.0)
+    │     ├ MavenPackage(org.testng/testng - 6.3.1)
+    │     ├ MavenPackage(com.google.inject/guice - 3.0)
+    │     ├ MavenPackage(junit/junit - 4.10)
+    │     ├ MavenPackage(org.seleniumhq.selenium/selenium-java - 2.31.0)
+    │     ├ MavenPackage(net.sourceforge.cobertura/cobertura - 1.9.1)
+    │     ├ MavenPackage(commons-io/commons-io - 1.3.2)
+    │     ├ MavenPackage(org.eclipse.jetty/jetty-server - 8.1.8.v20121106)
+    │     ├ MavenPackage(org.eclipse.jetty/jetty-webapp - 8.1.8.v20121106)
+    │     ├ MavenPackage(asm/asm - 3.3.1)
+    │     ├ MavenPackage(org.pegdown/pegdown - 1.1.0)
+    │     ├ MavenPackage(org.ops4j.pax.exam/pax-exam-container-native - 2.6.0)
+    │     ├ MavenPackage(org.ops4j.pax.exam/pax-exam-junit4 - 2.6.0)
+    │     ├ MavenPackage(org.ops4j.pax.exam/pax-exam-link-mvn - 2.6.0)
+    │     ├ MavenPackage(org.ops4j.pax.url/pax-url-aether - 1.5.0)
+    │     ├ MavenPackage(org.apache.felix/org.apache.felix.framework - 4.0.3)
+    │     ├ MavenPackage(org.eclipse.tycho/org.eclipse.osgi - 3.7.0.v20110613)
+    │     ├ MavenPackage(org.slf4j/slf4j-api - 1.7.1)
+    │     ├ MavenPackage(ch.qos.logback/logback-core - 1.0.7)
+    │     └ MavenPackage(ch.qos.logback/logback-classic - 1.0.7)
+    └ MavenPackage(org.scala-lang/scala-library - 2.13.16)
+    ```
+
 # Этап 4
 ## Список изменений:
 * ### Добавлен поиск обратных зависимостей пакета

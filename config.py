@@ -1,7 +1,6 @@
-from pathlib import Path
 import yaml
 
-asciiFormats = ("default",)
+asciiFormats = ("none", "tree", "list")
 repositoryModes = ("local", "url")
 
 class ConfigError (Exception):
@@ -33,10 +32,10 @@ class Config ():
             raise ConfigError(f"Unknown repository mode: {self.mode}")
         
         self.output = config.get("output-path", "output.png")
-        if not isinstance(self.output, str) or not Path(self.output).is_file():
+        if not isinstance(self.output, str):
             raise ConfigError(f"Wrong output path: {self.output}")
         
-        self.ascii = config.get("ascii-format", "default")
+        self.ascii = config.get("ascii-format", "none")
         if not self.ascii in asciiFormats:
             raise ConfigError(f"Unknown ascii format: {self.ascii}")
         

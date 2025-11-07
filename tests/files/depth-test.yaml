@@ -6,5 +6,5 @@ package-name: package
 package-version: 0.0.0
 repository-path: repo.txt
 output-path: files/output.png
-ascii-format: default
+ascii-format: none
 max-depth: -99
