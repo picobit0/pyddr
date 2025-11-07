@@ -9,5 +9,5 @@ package-version: 6.0.0
 repository-path: repo/
 repository-mode: local
 output-path: output/output-junit.svg
-ascii-format: none
+ascii-format: list
 max-depth: 15

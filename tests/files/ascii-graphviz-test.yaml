@@ -9,5 +9,5 @@ package-version: 3.7.3
 repository-path: repo/
 repository-mode: local
 output-path: output/output-scala.svg
-ascii-format: none
-max-depth: 4
+ascii-format: graphviz
+max-depth: 3

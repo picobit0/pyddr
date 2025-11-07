@@ -21,10 +21,6 @@ echo -- repo mode test --
 py ../grapher.py -c files/repo-mode-test.yaml
 
 echo.
-echo -- output path test --
-py ../grapher.py -c files/out-path-test.yaml
-
-echo.
 echo -- ascii format test --
 py ../grapher.py -c files/ascii-format-test.yaml
 

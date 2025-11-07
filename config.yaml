@@ -8,6 +8,6 @@ package-version: 3.5.4
 
 repository-path: tests/repo/
 repository-mode: local
-output-path: output.png
-ascii-format: default
-max-depth: 30
+output-path: output.svg
+ascii-format: tree
+max-depth: 3

@@ -119,7 +119,10 @@ class MavenPackage:
                 continue
             res.append(MavenPackage(dep["groupId"], dep["artifactId"], version))
         return res
-            
+
+    def to_dot_string (self):
+        return f'"{self.group}/\n{self.id}\n{self.version}"'
+    
     def __repr__ (self):
         return f"MavenPackage({self.group}/{self.id} - {self.version})"
 
